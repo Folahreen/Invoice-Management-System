@@ -1,0 +1,35 @@
+﻿@model Invoice_Management_System.Models.Clients
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info"> Delete Client </h2>
+<br />
+
+<form method="post" asp-action="Delete">
+    <div class="border backgroundWhite">
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="ClientName" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="ClientName" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="PhoneNumber" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="PhoneNumber" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-5 offset-md-2">
+                <partial name="_DeleteAndBackToListButton" model="Model.ClientId" />
+            </div>
+        </div>
+    </div>
+</form>

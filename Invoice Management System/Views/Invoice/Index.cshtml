@@ -1,0 +1,58 @@
+﻿@model IEnumerable<InvoiceModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6 text-info">
+            <h2>Retrieved Invoice List</h2>
+        </div>
+    </div>
+    @if (Model.Count() > 0)
+    {
+        <div class="pt-3">
+            <table class="table table-striped border">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.InvoiceId)</th>
+                    <th>@Html.DisplayNameFor(m => m.InvoiceDescription)</th>
+                    <th>@Html.DisplayNameFor(m => m.Client.ClientName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Currency.CurrencyCode)</th>
+                    <th>@Html.DisplayNameFor(m => m.InvoiceAmount)</th>
+                    <th>@Html.DisplayNameFor(m => m.ExchangeRate.ExchangeRates)</th>
+                    <th>@Html.DisplayNameFor(m => m.OrderNumber)</th>
+                    <th>@Html.DisplayNameFor(m => m.SalesAgent)</th>
+                    <th>@Html.DisplayNameFor(m => m.InvoiceDate)</th>
+                    <th>@Html.DisplayNameFor(m => m.DeliveryDate)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>@Html.DisplayFor(m => item.InvoiceId)</td>
+                <td>@Html.DisplayFor(m => item.InvoiceDescription)</td>
+                <td>@Html.DisplayFor(m => item.Client.ClientName)</td>
+                <td>@Html.DisplayFor(m => item.Currency.CurrencyCode)</td>
+                <td>@Html.DisplayFor(m => item.InvoiceAmount)</td>
+                <td>@Html.DisplayFor(m => item.ExchangeRate.ExchangeRates)</td>
+                <td>@Html.DisplayFor(m => item.OrderNumber)</td>
+                <td>@Html.DisplayFor(m => item.SalesAgent)</td>
+                <td>@Html.DisplayFor(m => item.InvoiceDate)</td>
+                <td>@Html.DisplayFor(m => item.DeliveryDate)</td>
+            </tr>
+                }
+            </table>
+        </div>
+
+    }
+    else
+    {
+        <p>No Invoice exist....</p>
+    }
+</div>
+

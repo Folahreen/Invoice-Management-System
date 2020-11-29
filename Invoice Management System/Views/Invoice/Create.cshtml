@@ -1,0 +1,135 @@
+﻿@model Invoice_Management_System.Models.ViewModel.InvoiceViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info"> Create Invoice </h2>
+<br />
+
+<form asp-action="Create">
+    <div class="border backgroundWhite">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.InvoiceId" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.InvoiceId" class="form-control" readonly />
+            </div>
+            <span asp-validation-for="Invoice.InvoiceId" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.InvoiceDescription" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.InvoiceDescription" class="form-control" />
+            </div>
+            <span asp-validation-for="Invoice.InvoiceDescription" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.ClientId" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                @Html.DropDownListFor(e => e.Invoice.ClientId, new SelectList(Model.ClientList, "ClientId", "ClientName"), "Select Client", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <a href="/Clients/Create">Add New Client</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.CurrencyId" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                @Html.DropDownListFor(e => e.Invoice.CurrencyId, new SelectList(Model.CurrencyList, "CurrencyId", "CurrencyCode"), "Select Currency", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <a href="/Currency/Create">Add New Currency</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.InvoiceAmount" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.InvoiceAmount" class="form-control" />
+            </div>
+            <span asp-validation-for="Invoice.InvoiceAmount" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.VAT" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <select asp-for="Invoice.VAT" class="form-control">
+                    <option value="N/A">Select VAT</option>
+                    <option value="7.5">7.5%</option>
+                </select>
+            </div>
+            <span asp-validation-for="Invoice.VAT" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.ExchangeRateId" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                @Html.DropDownListFor(e => e.Invoice.ExchangeRateId, new SelectList(Model.ExchangeList, "ExchangeRateId", "ExchangeRates"), "Select Exchange Rate", new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <a href="/ExchangeRates/Create">Add New Exchange Rate</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.OrderNumber" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.OrderNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="Invoice.OrderNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.SalesAgent" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.SalesAgent" class="form-control" />
+            </div>
+            <span asp-validation-for="Invoice.SalesAgent" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.InvoiceDate" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.InvoiceDate" class="form-control" />
+            </div>
+            <span asp-validation-for="Invoice.InvoiceDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Invoice.DeliveryDate" class="col-md-form-label text-info font-weight-bold"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="Invoice.DeliveryDate" class="form-control" />
+            </div>
+            <span asp-validation-for="Invoice.DeliveryDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-5 offset-md-2">
+                <partial name="_CreateAndBackToListButton" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
