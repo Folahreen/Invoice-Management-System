@@ -66,7 +66,7 @@ namespace Invoice_Management_System.Controllers
             {
                 _context.InvoiceModels.Add(model.Invoice);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Alert));
             }
             var modelVM = new InvoiceViewModel()
             {
@@ -76,6 +76,11 @@ namespace Invoice_Management_System.Controllers
                 Invoice = model.Invoice
             };
             return View(modelVM);
+        }
+
+        public ActionResult Alert()
+        {
+            return View();
         }
     }
 }
